@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="dataSources" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<constructor-arg value="jdbc:oracle:thin:@localhost:1521/xe"/>
+		<constructor-arg value="System"/>
+		<constructor-arg value="12345"/>
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	</bean>
+	
+	<!-- Configure EmployeeDAO here -->
+	<bean id = "empDao" class= "com.sysintelli.dao.EmployeeDAO">
+	<property name = "dataSource" ref ="dataSources"/>
+	
+	</bean>
+	
+	<bean id = "empid" class= "com.sysintelli.entity.Employee">
+	<property name= "id" value="3"/>
+	
+	</bean>	
+</beans>
